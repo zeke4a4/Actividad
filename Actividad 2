@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Interactiva: Resolver edades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resolver edades</h1>
+        <p>Marta tiene el triple de la edad de Juan. Si multiplicamos sus edades, obtenemos 48. Completa los espacios en blanco para resolver el problema paso a paso.</p>
+        
+        <div class="input-field">
+            <label for="step1">1. Define la edad de Juan como:</label>
+            <input type="text" id="step1" placeholder="Ejemplo: x">
+        </div>
+        
+        <div class="input-field">
+            <label for="step2">2. Escribe la relación entre la edad de Marta y la de Juan:</label>
+            <input type="text" id="step2" placeholder="Ejemplo: 3x">
+        </div>
+        
+        <div class="input-field">
+            <label for="step3">3. Expresa el producto de sus edades como ecuación:</label>
+            <input type="text" id="step3" placeholder="Ejemplo: x * 3x = 48">
+        </div>
+        
+        <div class="input-field">
+            <label for="step4">4. Resuelve la ecuación para encontrar x²:</label>
+            <input type="text" id="step4" placeholder="Ejemplo: x² = 16">
+        </div>
+        
+        <div class="input-field">
+            <label for="step5">5. Encuentra los valores posibles para x:</label>
+            <input type="text" id="step5" placeholder="Ejemplo: x = ±4">
+        </div>
+        
+        <div class="input-field">
+            <label for="step6">6. Considera solo valores positivos para la edad de Juan. ¿Cuál es la solución final?</label>
+            <input type="text" id="step6" placeholder="Ejemplo: x = 4">
+        </div>
+
+        <button onclick="verificar()">Verificar</button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function verificar() {
+            const respuestas = {
+                step1: "x",
+                step2: "3x",
+                step3: "x * 3x = 48",
+                step4: "x² = 16",
+                step5: "x = ±4",
+                step6: "x = 4"
+            };
+
+            let correct = true;
+            for (const step in respuestas) {
+                const input = document.getElementById(step).value.trim();
+                if (input !== respuestas[step]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById("result");
+            if (correct) {
+                resultDiv.textContent = "¡Correcto! Has resuelto el problema correctamente.";
+                resultDiv.className = "result correct";
+            } else {
+                resultDiv.textContent = "Algunas respuestas son incorrectas. Por favor, revisa y vuelve a intentar.";
+                resultDiv.className = "result incorrect";
+            }
+        }
+    </script>
+</body>
+</html>
